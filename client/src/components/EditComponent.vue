@@ -1,24 +1,20 @@
 <template>
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h3 class="text-center">Update a Meow</h3>
+            <h3 class="text-center">Update your Meow</h3>
             <form @submit.prevent="updateMeow">
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" class="form-control" v-model="meow.name" required>
                 </div>
 
-                <div class="form-group">
-                <label for="updateMeow">Message</label>
+                <div class="form-group updateMeow" :class="{ '--exceeded': newMeowCharacterCount > 180 }">
+                <label for="updateMeow">Message ({{ newMeowCharacterCount}}/180)</label>
                 <br />
                 <textarea class="form-control" id="updateMeow" rows="4" v-model="meow.content" required /> 
-                <!-- TODO: 
-                        * SCSS style to full width 
-                        * Max character count
-                --> 
                 </div>
 
-                <div class="form-group">
+                <div class="form-group updateMeow" :class="{ '--exceeded': newMeowCharacterCount > 180 }">
                     <button class="btn btn-danger btn-block">Update</button>
                 </div>
             </form>
@@ -42,17 +38,28 @@ export default {
             this.meow = res.data;
         })
     },
+    computed: {
+        newMeowCharacterCount() {
+            return this.meow.content.length;
+        }
+    },
     methods: {
         updateMeow() {
             let apiURL = `http://localhost:3000/api/update-meow/${this.$route.params.id}`;
 
-            axios.post(apiURL, this.meow).then((res) => {
-                console.log(res)
-                this.$router.push('/view')
-            }).catch(err => {
-                console.log(err)
-            });
+            if (this.meow.content.length <= 180) {
+                axios.post(apiURL, this.meow).then((res) => {
+                    console.log(res)
+                    this.$router.push('/view')
+                }).catch(err => {
+                    console.log(err)
+                });
+            }
         }
     }
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>
