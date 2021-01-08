@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <h3 class="text-center">Leave a Meow</h3>
-            <form @subit.prevent="createNewMeow"> <!-- refeers to method in script -->
+            <form @submit.prevent="createNewMeow"> <!-- refeers to method in script -->
                 <div class="form-group">
                     <label for="username">Name</label>
                     <input id="username" type="text" class="form-control" v-model="meow.name" required> <!-- v-model connects field with data in scripts -->
