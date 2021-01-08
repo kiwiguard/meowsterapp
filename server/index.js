@@ -28,10 +28,16 @@ app.use(cors());
 // API
 app.use('/api', meowAPI)
 
+// Handle production
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(__dirname + '/public'));
+
+    // Handle SPA
+    app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
+}
+
 // Create port
 const port = process.env.PORT || 3000;
-app.use(express.static(__dirname + '/dist'));
-app.get(/.*/, (req, res) => res.sendFile(__dirname + '/dist/index.html'));
 app.listen(port, () => {
     console.log('Connected to port ' + port)
 });

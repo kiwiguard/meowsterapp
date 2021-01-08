@@ -25,7 +25,7 @@
             }
         },
         created() {
-            let apiURL = 'http://localhost:3000/api';
+            let apiURL = '/api';
             axios.get(apiURL).then(res => {
                 this.Meows = res.data;
             }).catch(err => {
@@ -34,7 +34,7 @@
         },
         methods: {
             deleteMeow(id){
-                let apiURL = `http://localhost:3000/api/delete-meow/${id}`;
+                let apiURL = `/api/delete-meow/${id}`;
                 let indexOfArrayItem = this.Meows.findIndex(i => i._id === id);
 
                 if (window.confirm("Do you really want to delete?")) {
