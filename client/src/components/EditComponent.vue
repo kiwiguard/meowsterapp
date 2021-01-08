@@ -32,7 +32,7 @@ export default {
         }
     },
     created() {
-        let apiURL = `/api/edit-meow/${this.$route.params.id}`;
+        let apiURL = `api/edit-meow/${this.$route.params.id}`;
 
         axios.get(apiURL).then((res) => {
             this.meow = res.data;
@@ -45,7 +45,7 @@ export default {
     },
     methods: {
         updateMeow() {
-            let apiURL = `/api/update-meow/${this.$route.params.id}`;
+            let apiURL = `api/update-meow/${this.$route.params.id}`;
 
             if (this.meow.content.length <= 180) {
                 axios.post(apiURL, this.meow).then((res) => {

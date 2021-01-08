@@ -34,7 +34,7 @@
         },
         methods: {
             deleteMeow(id){
-                let apiURL = `/api/delete-meow/${id}`;
+                let apiURL = `api/delete-meow/${id}`;
                 let indexOfArrayItem = this.Meows.findIndex(i => i._id === id);
 
                 if (window.confirm("Do you really want to delete?")) {
