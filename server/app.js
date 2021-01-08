@@ -17,7 +17,7 @@ mongoose.connect(database.db, {
     }
 )
 
-const meowAPI = require('../server/routes/meow.route')
+const meowAPI = require('./routes/meow.route')
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded ({
@@ -30,7 +30,9 @@ app.use('/api', meowAPI)
 
 // Create port
 const port = process.env.PORT || 3000;
-const server = app.listen(port, () => {
+app.use(express.static(__dirname + '/dist'));
+app.get(/.*/, (req, res) => res.sendFile(__dirname + '/dist/index.html'));
+app.listen(port, () => {
     console.log('Connected to port ' + port)
 });
 
