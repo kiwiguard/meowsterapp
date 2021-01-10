@@ -2,7 +2,7 @@
   <div class="user-profile">
     <div class="user-profile_sidebar">
       <div class="user-profile_user-panel">
-          <h1 class="user-profile_username">Leave a Meow</h1><!--displays currently loggedin user -->
+          <h1 class="user-profile_username">Leave a Meow</h1>
       </div>
       <CreateMeowPanel/>
     </div>
@@ -44,16 +44,6 @@ export default {
 
     h1 {
       margin: 0;
-    }
-
-    .user-profile_admin-badge {
-      background: rebeccapurple;
-      color: white;
-      border-radius: 5px;
-      margin-right: auto;
-      padding: 2px 10px;
-      font-weight: bold;
-      margin-bottom: 5px;
     }
 
   }

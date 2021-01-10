@@ -38,7 +38,7 @@ export default {
     },
     methods: {
         createNewMeow() {
-            let apiURL = 'api/create-meow';
+            let apiURL = '/api/create-meow';
 
             if (this.meow.content.length <= 180) {
                 axios.post(apiURL, this.meow).then(() => {
