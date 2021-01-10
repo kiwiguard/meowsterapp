@@ -8,13 +8,13 @@
                     <input type="text" class="form-control" v-model="meow.name" required>
                 </div>
 
-                <div class="form-group updateMeow" :class="{ '--exceeded': newMeowCharacterCount > 180 }">
-                <label for="updateMeow">Message ({{ newMeowCharacterCount}}/180)</label>
+                <div class="form-group updateMeow">
+                <label for="updateMeow">Message</label>
                 <br />
                 <textarea class="form-control" id="updateMeow" rows="4" v-model="meow.content" required /> 
                 </div>
 
-                <div class="form-group updateMeow" :class="{ '--exceeded': newMeowCharacterCount > 180 }">
+                <div class="form-group updateMeow">
                     <button class="btn btn-danger btn-block">Update</button>
                 </div>
             </form>
@@ -37,11 +37,6 @@ export default {
         axios.get(apiURL).then((res) => {
             this.meow = res.data;
         })
-    },
-    computed: {
-        newMeowCharacterCount() {
-            return this.meow.content.length;
-        }
     },
     methods: {
         updateMeow() {
