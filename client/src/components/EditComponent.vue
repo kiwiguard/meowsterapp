@@ -42,14 +42,12 @@ export default {
         updateMeow() {
             let apiURL = `/api/update-meow/${this.$route.params.id}`;
 
-            if (this.meow.content.length <= 180) {
                 axios.post(apiURL, this.meow).then((res) => {
                     console.log(res)
                     this.$router.push('/view')
                 }).catch(err => {
                     console.log(err)
                 });
-            }
         }
     }
 }
